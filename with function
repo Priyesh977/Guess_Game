@@ -1,0 +1,54 @@
+print("If You want to play a game press 'Y' else press 'N' ")
+a = input()
+a1 = a.lower()
+def guessGame():
+    import random
+    randNumber = random.randint(1, 100)
+    guesses = 1
+
+    if a1=='n':
+        print("See You Later!!!!!!")
+
+    elif a1=='y':
+        print("Welcome to guess Game.Here you need toGuess a number between 1 To 100")
+        print("Let's Begin!!")
+        print("Enter your guess between 1 to 100.")
+        num = int(input())
+        while guesses<5:
+            if (num<randNumber):
+                print(f"Your Guess is TOO LOW. Please Guess a little HIGHER!")
+                print(f"Number of Guess left : {5-guesses}")
+                num = int(input("Enter a Number Again : "))
+                guesses = guesses+1
+            elif (num>randNumber):
+                print(f"Your Guess is TOO HIGH. Please Guess a little LOWER!")
+                print(f"Number of Guess left : {5-guesses}")
+                num = int(input("Enter a Number Again : "))
+                guesses = guesses+1
+
+            elif (num==randNumber):
+                print(f"Congratulations!!!! You have guessed the Number in {guesses} guesses")
+                break
+            
+            if (guesses>=5):
+                print(f"Sorry You weren't able to Guess the Right Number. The Number was {randNumber}")
+                break       
+        again()
+
+    else:
+        print("Invalid Input. Try Again")
+        again()    
+
+def again():
+    guess_again = input("Do you want to play Again, If yes press 'Y' otherwise press 'N' ")
+    guess_again1 = guess_again.lower()
+    if guess_again1=='y':
+        guessGame()
+    elif guess_again1=='n':
+        print("Till we meet Again!")
+    else:
+        print("Invalid Input. Try Again")
+        again()
+
+guessGame()
+
