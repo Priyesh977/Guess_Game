@@ -1,0 +1,40 @@
+import random
+randNumber = random.randint(1, 100)
+guesses = 1
+#print(randNumber)
+print('''*****************Welcome To Guess Game*********************\n
+You will be given 5 chances to Guess a Number from 1 - 100.\n
+If you are Ready to begin press "Y" else press "N".''')
+a = input()
+a1 = a.lower()
+
+if (a1=='y'):
+    print('''We have a Daring Player!!!!!!!\nLet's Begin\nRemember You have Only 5 Trys So Guess Carefully''')
+
+    num = int(input("Enter a Number : "))
+
+    while(guesses<5):
+        if (num<randNumber):
+            print(f"Your Guess is TOO LOW. Please Guess a little HIGHER!")
+            print(f"Number of Guess left : {5-guesses}")
+            num = int(input("Enter a Number Again : "))
+            guesses = guesses+1
+        if (num>randNumber):
+            print(f"Your Guess is TOO HIGH. Please Guess a little LOWER!")
+            print(f"Number of Guess left : {5-guesses}")
+            num = int(input("Enter a Number Again : "))
+            guesses = guesses+1
+
+        if (num==randNumber):
+            print(f"Congratulations!!!! You have guessed the Number in {guesses} guesses")
+            break
+        
+        if (guesses>=5):
+            print(f"Sorry You weren't able to Guess the Right Number. The Number was {randNumber}")
+
+elif(a1=='n'):
+    print("No worries We'll Play Next Time")
+
+else:
+    print("Invalid Input.")
+
